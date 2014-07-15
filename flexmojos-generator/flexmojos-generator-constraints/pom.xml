@@ -24,11 +24,11 @@
   <parent>
     <groupId>org.sonatype.flexmojos</groupId>
     <artifactId>flexmojos-generator</artifactId>
-    <version>3.7.1</version>
+    <version>3.7.1-2</version>
   </parent>
 
   <artifactId>flexmojos-generator-constraints</artifactId>
-  
+
   <name>Flexmojos Generator - Constraints</name>
 
   <build>

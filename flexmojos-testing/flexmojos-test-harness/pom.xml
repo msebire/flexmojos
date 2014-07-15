@@ -25,7 +25,7 @@
   <parent>
     <groupId>org.sonatype.flexmojos</groupId>
     <artifactId>flexmojos-testing</artifactId>
-    <version>3.8-SNAPSHOT</version>
+    <version>3.7.1-2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -162,9 +162,9 @@
             <xml>org.apache.maven.plugins:maven-install-plugin:2.3</xml>
             <xml>org.apache.maven.plugins:maven-dependency-plugin:2.1</xml>
             <xml>org.apache.maven.plugins:maven-resources-plugin:2.4.3</xml>
-            
+
             <xml>emma:emma:2.0.5312</xml>
-            
+
             <xml>com.adobe.flex:compiler:2.0.1.180927:pom</xml>
             <xml>com.adobe.flex.framework:flex-framework:2.0.1.180927:pom</xml>
             <xml>com.adobe.flex:compiler:${flex.sdk.version}:pom</xml>
@@ -173,7 +173,7 @@
 
             <xml>org.sonatype.flexmojos:flexmojos-maven-plugin:${project.version}</xml>
             <xml>org.sonatype.flexmojos:flexmojos-parent:${project.version}:pom</xml>
-            
+
             <xml>org.sonatype.flexmojos:flexmojos-unittest-support:${project.version}:swc</xml>
             <xml>org.sonatype.flexmojos:flexmojos-unittest-flexunit:${project.version}:swc</xml>
             <xml>org.sonatype.flexmojos:flexmojos-unittest-flexunit4:${project.version}:swc</xml>
@@ -181,7 +181,7 @@
             <xml>org.sonatype.flexmojos:flexmojos-unittest-funit:${project.version}:swc</xml>
             <xml>org.sonatype.flexmojos:flexmojos-unittest-asunit:${project.version}:swc</xml>
             <xml>org.sonatype.flexmojos:flexmojos-unittest-advancedflex:${project.version}:swc</xml>
-            
+
             <xml>org.sonatype.flexmojos:flexmojos-air-super-pom:${project.version}:pom</xml>
             <xml>org.sonatype.flexmojos:flexmojos-flex-super-pom:${project.version}:pom</xml>
           </extraArtifacts>
