@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -47,6 +48,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.filefilter.AgeFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.lang.ArrayUtils;
@@ -65,6 +67,13 @@ import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluationException;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.util.DirectoryScanner;
+import org.jdom.Attribute;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 import org.jvnet.animal_sniffer.IgnoreJRERequirement;
 import org.sonatype.flexmojos.AbstractIrvinMojo;
 import org.sonatype.flexmojos.common.FlexClassifier;
@@ -972,6 +981,27 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     private Warning warnings;
 
     /**
+     * Sets a list of Components to be excluded from a manifest.
+	 *
+     * Usage:
+     * <p/>
+     * <pre>
+     * &lt;manifestExclusions&gt;
+     *  &lt;manifestExclusion&gt;
+     *      &lt;uri&gt;http://www.adobe.com/2006/mxml&lt;/uri&gt;
+     *      &lt;exclusions&gt;
+     *          &lt;exclusion&gt;ComboBox&lt;/exclusion&gt;
+     *          &lt;exclusion&gt;AreaChart&lt;/exclusion&gt;
+     *      &lt;/exclusions&gt;
+     *  &lt;/manifestExclusion&gt;
+     * &lt;/manifestExclusions&gt;
+     * </pre>
+     *
+     * @parameter
+     */
+    private ManifestExclusion[] manifestExclusions;
+
+    /**
      * Construct instance
      */
     public AbstractCompilerMojo()
@@ -1428,7 +1458,74 @@ public abstract class AbstractCompilerMojo<E extends Builder>
             throw new MojoExecutionException( "Flex-compiler API change, unable to use suggested 'solutions'!" );
         }
 
+        configureManifestExclusions(sdkConfigResolver);
+
         verifyDigests();
+    }
+
+    private void configureManifestExclusions(FDKConfigResolver sdkConfigResolver) throws MojoExecutionException {
+        List<Namespace> defaultNamespaces = sdkConfigResolver.getNamespaces();
+        if (defaultNamespaces != null) {
+            for (Namespace namespace : defaultNamespaces) {
+                for (ManifestExclusion manifestExclusion : manifestExclusions) {
+                    if (namespace.getUri().equals(manifestExclusion.getUri())) {
+                        try {
+                            excludeComponentsFromManifest(namespace.getManifest(), manifestExclusion.getExclusions());
+                        } catch (Exception e) {
+                            throw new MojoExecutionException("An error has ocurried while updating Framework exclusions", e);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void excludeComponentsFromManifest(File manifest, List<String> exclusions) throws JDOMException, IOException {
+        SAXBuilder parser = new SAXBuilder();
+        Document document = parser.build(manifest);
+
+        List components = document.getRootElement().getChildren();
+        for (String exclusion : exclusions) {
+            boolean removed = removeExclusion(components, exclusion);
+            if (!removed) {
+                getLog().error("Could not remove " + exclusion + ". Using Flex framework implementation instead.");
+            }
+        }
+        writerManifest(manifest, document);
+    }
+
+    private boolean removeExclusion(List componentNodes, String exclusion) {
+        for (Object node : componentNodes) {
+            if (node instanceof Element) {
+                Element element = (Element) node;
+                Attribute id = element.getAttribute("id");
+                if (id != null && exclusion.equals(id.getValue())) {
+                    return element.getParentElement().removeContent(element);
+                }
+            }
+        }
+        return false;
+    }
+
+    private void writerManifest(File outputFile, Document document) throws IOException {
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(outputFile);
+            write(writer, document);
+            writer.close();
+        } finally {
+            IOUtils.closeQuietly(writer);
+        }
+    }
+
+    private void write(FileWriter writer, Document document) throws IOException {
+        XMLOutputter outputter = new XMLOutputter();
+        Format format = Format.getPrettyFormat();
+        format.setIndent("\t");
+        outputter.setFormat(format);
+
+        outputter.output(document, writer);
+        writer.flush();
     }
 
     protected void configureExterns()
