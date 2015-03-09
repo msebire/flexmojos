@@ -23,7 +23,7 @@
   <parent>
     <groupId>org.sonatype.flexmojos</groupId>
     <artifactId>flexmojos-archetypes</artifactId>
-    <version>3.7.1-3</version>
+    <version>3.7.1-4</version>
   </parent>
 
   <artifactId>flexmojos-archetypes-library</artifactId>
