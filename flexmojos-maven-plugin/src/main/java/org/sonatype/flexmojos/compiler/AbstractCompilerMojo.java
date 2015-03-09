@@ -1464,15 +1464,17 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     }
 
     private void configureManifestExclusions(FDKConfigResolver sdkConfigResolver) throws MojoExecutionException {
-        List<Namespace> defaultNamespaces = sdkConfigResolver.getNamespaces();
-        if (defaultNamespaces != null) {
-            for (Namespace namespace : defaultNamespaces) {
-                for (ManifestExclusion manifestExclusion : manifestExclusions) {
-                    if (namespace.getUri().equals(manifestExclusion.getUri())) {
-                        try {
-                            excludeComponentsFromManifest(namespace.getManifest(), manifestExclusion.getExclusions());
-                        } catch (Exception e) {
-                            throw new MojoExecutionException("An error has ocurried while updating Framework exclusions", e);
+        if (manifestExclusions != null) {
+            List<Namespace> defaultNamespaces = sdkConfigResolver.getNamespaces();
+            if (defaultNamespaces != null) {
+                for (Namespace namespace : defaultNamespaces) {
+                    for (ManifestExclusion manifestExclusion : manifestExclusions) {
+                        if (namespace.getUri().equals(manifestExclusion.getUri())) {
+                            try {
+                                excludeComponentsFromManifest(namespace.getManifest(), manifestExclusion.getExclusions());
+                            } catch (Exception e) {
+                                throw new MojoExecutionException("An error has ocurried while updating Framework exclusions", e);
+                            }
                         }
                     }
                 }
@@ -1486,25 +1488,30 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
         List components = document.getRootElement().getChildren();
         for (String exclusion : exclusions) {
-            boolean removed = removeExclusion(components, exclusion);
-            if (!removed) {
-                getLog().error("Could not remove " + exclusion + ". Using Flex framework implementation instead.");
+            Element elementToBeRemoved = findElementToBeRemoved(components, exclusion);
+            if (elementToBeRemoved != null) {
+                boolean removed = elementToBeRemoved.getParentElement().removeContent(elementToBeRemoved);
+                if (!removed) {
+                    getLog().error("Could not remove " + exclusion + ". Using Flex framework implementation instead.");
+                }
+            } else {
+                getLog().info(exclusion + " was already removed or was not present in the Manifest");
             }
         }
         writerManifest(manifest, document);
     }
 
-    private boolean removeExclusion(List componentNodes, String exclusion) {
+    private Element findElementToBeRemoved(List componentNodes, String exclusion) {
         for (Object node : componentNodes) {
             if (node instanceof Element) {
                 Element element = (Element) node;
                 Attribute id = element.getAttribute("id");
                 if (id != null && exclusion.equals(id.getValue())) {
-                    return element.getParentElement().removeContent(element);
+                    return element;
                 }
             }
         }
-        return false;
+        return null;
     }
 
     private void writerManifest(File outputFile, Document document) throws IOException {
@@ -1548,10 +1555,8 @@ public abstract class AbstractCompilerMojo<E extends Builder>
             for ( MavenArtifact mvnArtifact : loadExterns )
             {
                 Artifact artifact =
-                    artifactFactory.createArtifactWithClassifier( mvnArtifact.getGroupId(),
-                                                                  mvnArtifact.getArtifactId(),
-                                                                  mvnArtifact.getVersion(), "xml",
-                                                                  FlexClassifier.LINK_REPORT );
+                    artifactFactory.createArtifactWithClassifier(mvnArtifact.getGroupId(), mvnArtifact.getArtifactId(), mvnArtifact.getVersion(), "xml",
+                                                                 FlexClassifier.LINK_REPORT);
                 artifact =
                     MavenUtils.resolveArtifact( project, artifact, resolver, localRepository, remoteRepositories );
                 externsFiles.add( artifact.getFile() );
