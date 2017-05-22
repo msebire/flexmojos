@@ -122,14 +122,14 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Turn on generation of accessible SWFs.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean accessible;
 
     /**
      * Allow the source-path to have path-elements which contain other path-elements
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean allowSourcePathOverlap;
@@ -138,7 +138,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Use the ActionScript 3 class based object model for greater performance and better error reporting. In the class
      * based object model most built-in functions are implemented as fixed methods of classes (-strict is recommended,
      * but not required, for earlier errors)
-     * 
+     *
      * @parameter default-value="true"
      */
     private boolean as3;
@@ -146,7 +146,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * If true, flexmojos will try to sort the runtime shared libraries using their dependencies lists to figure out
      * which RSLs must be loaded first
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean autoSortRsls;
@@ -158,7 +158,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Classifier to add to the artifact generated. If given, the artifact will be an attachment instead.
-     * 
+     *
      * @parameter expression="${flexmojos.classifier}"
      */
     private String classifier;
@@ -166,7 +166,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * This is equilvalent to the <code>compiler.mxmlc.compatibility-version</code> option of the compc compiler. Must
      * be in the form <major>.<minor>.<revision> Valid values: <tt>2.0.0</tt>, <tt>2.0.1</tt> and <tt>3.0.0</tt>
-     * 
+     *
      * @see http://livedocs.adobe.com/flex/3/html/help.html?content=versioning_4. html
      * @parameter
      */
@@ -181,7 +181,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Sets the locales that the compiler uses to replace <code>{locale}</code> tokens that appear in some configuration
      * values. This is equivalent to using the <code>compiler.locale</code> option of the mxmlc or compc compilers. <BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;compiledLocales&gt;
      *    &lt;locale&gt;en_US&lt;/locale&gt;
@@ -189,14 +189,14 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *    &lt;locale&gt;es_ES&lt;/locale&gt;
      * &lt;/compiledLocales&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     protected String[] compiledLocales;
 
     /**
      * Load a file containing configuration options If not defined, by default will search for one on resources folder.
-     * 
+     *
      * @parameter
      * @deprecated Use configFiles instead
      */
@@ -204,20 +204,20 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Load a file containing configuration options If not defined, by default will search for one on resources folder.
-     * 
+     *
      * @parameter
      */
     protected File[] configFiles;
 
     /**
-     * Flex OEM compiler configurations We can not use interface, because Flex SDK 3.2.0.3958 has method
+     * Flex OEM compiler configurations We can not use interface, because Flex SDK 3.5.0.12683B has method
      * "setConfiguration(java.lang.String[] strings)" only in OEMConfiguration (Flex SDK 4 is ok)
      */
     protected Configuration configuration;
 
     /**
      * Writes the configuration report to a file after the build.
-     * 
+     *
      * @parameter default-value="false" expression="${configurationReport}"
      */
     protected boolean configurationReport;
@@ -225,14 +225,14 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the context root path so that the compiler can replace <code>{context.root}</code> tokens for service
      * channel endpoints.
-     * 
+     *
      * @parameter
      */
     protected String contextRoot;
 
     /**
      * A password that is embedded in the application
-     * 
+     *
      * @parameter
      */
     protected String debugPassword;
@@ -240,7 +240,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the default background color. You can override this by using the application code. This is the equivalent of
      * the <code>default-background-color</code> option of the mxmlc or compc compilers.
-     * 
+     *
      * @parameter default-value="869CA7"
      */
     private String defaultBackgroundColor;
@@ -248,7 +248,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the default frame rate to be used in the application. This is the equivalent of the
      * <code>default-frame-rate</code> option of the mxmlc or compc compilers.
-     * 
+     *
      * @parameter default-value="24"
      */
     private int defaultFrameRate;
@@ -256,7 +256,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the location of the default CSS file. This is equivalent to using the <code>compiler.defaults-css-url</code>
      * option of the mxmlc or compc compilers</code>.
-     * 
+     *
      * @parameter
      */
     private File defaultsCss;
@@ -264,7 +264,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the default application height in pixels. This is equivalent to using the <code>default-size</code> option
      * of the mxmlc or compc compilers.
-     * 
+     *
      * @parameter default-value="375"
      */
     private int defaultSizeHeight;
@@ -272,7 +272,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the default application width in pixels. This is equivalent to using the <code>default-size</code> option of
      * the mxmlc or compc compilers.
-     * 
+     *
      * @parameter default-value="500"
      */
     private int defaultSizeWidth;
@@ -280,14 +280,14 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * defines: specifies a list of define directive key and value pairs. For example, CONFIG::debugging<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;defines&gt;
      *   &lt;SOMETHING::aNumber&gt;2.2&lt;/SOMETHING::aNumber&gt;
      *   &lt;SOMETHING::aString&gt;&quot;text&quot;&lt;/SOMETHING::aString&gt;
      * &lt;/defines&gt;
      * </pre>
-     * 
+     *
      * @parameter
      * @deprecated See definesDeclaration
      */
@@ -296,7 +296,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * defines: specifies a list of define directive key and value pairs. For example, CONFIG::debugging<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;definesDeclaration&gt;
      *   &lt;property&gt;
@@ -309,7 +309,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *   &lt;/property&gt;
      * &lt;/definesDeclaration&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private Properties definesDeclaration;
@@ -318,7 +318,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * When enabled flexmojos will add a custom path resolver to flex compiler. This allow flexmojos to resolve Embed
      * assets located at src/main/resources. This is a workaround and it is described at
      * http://bugs.adobe.com/jira/browse/SDK-15466
-     * 
+     *
      * @parameter default-value="true" expression="${enableMavenResourcesResolver}"
      */
     private boolean enableMavenResourcesResolver;
@@ -328,7 +328,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * is equivalent to using the <code>actionscript-file-encoding</code> option of the mxmlc or compc compilers.
      * <p>
      * The character encoding; for example <code>UTF-8</code> or <code>Big5</code>.
-     * 
+     *
      * @parameter default-value="UTF-8"
      */
     private String encoding;
@@ -337,7 +337,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Use the ECMAScript edition 3 prototype based object model to allow dynamic overriding of prototype properties. In
      * the prototype based object model built-in functions are implemented as dynamic properties of prototype objects
      * (-strict is allowed, but may result in compiler errors for references to dynamic properties)
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean es;
@@ -345,7 +345,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * LW : needed for expression evaluation Note : needs at least maven 2.0.8 because of MNG-3062 The maven
      * MojoExecution needed for ExpressionEvaluation
-     * 
+     *
      * @parameter expression="${mojoExecution}"
      * @required
      * @readonly
@@ -357,13 +357,13 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * <code>externs</code> option of the mxmlc and compc compilers. An array of definitions (for example, classes,
      * functions, variables, or namespaces).<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;externs&gt;
      *   &lt;extern&gt;com.acme.AClass&lt;/extern&gt;
      * &lt;/externs&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] externs;
@@ -373,7 +373,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * <code>java -cp mxmlc.jar flex2.tools.FontSnapshot (fontpath)</code>. Will default to winFonts.ser on Windows XP
      * and macFonts.ser on Mac OS X.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;fonts&gt;
      *   &lt;advancedAntiAliasing&gt;true&lt;/advancedAntiAliasing&gt;
@@ -389,7 +389,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *   &lt;maxGlyphsPerFace&gt;1000&lt;/maxGlyphsPerFace&gt;
      * &lt;/fonts&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private Font fonts;
@@ -398,7 +398,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Sets a SWF frame label with a sequence of class names that are linked onto the frame. This is equivalent to using
      * the <code>frames.frame</code> option of the mxmlc or compc compilers.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;frames&gt;
      *   &lt;frame&gt;
@@ -409,7 +409,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *   &lt;/frame&gt;
      * &lt;/frames&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private FrameLabel[] frames;
@@ -418,7 +418,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Sets the compiler when it runs on a server without a display. This is equivalent to using the
      * <code>compiler.headless-server</code> option of the mxmlc or compc compilers. that value determines if the
      * compiler is running on a server without a display.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean headlessServer;
@@ -426,7 +426,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * When true, flexmojos will check if the compiler and the framework versions match. Usually, you must use the same
      * compiler and framework versions. Set this to true to avoid this check. EXTREMELLY UN-ADVISIBLE.
-     * 
+     *
      * @parameter default-value="false" expression="${ignore.version.issues}"
      */
     private boolean ignoreVersionIssues;
@@ -443,7 +443,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Specify <code>excludes</code> parameter to exclude compile units that would otherwise be included.
      * </p>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;includeAsClasses&gt;
      *   &lt;sources&gt;
@@ -454,7 +454,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *   &lt;/sources&gt;
      * &lt;/includeAsClasses&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     protected FileSet[] includeAsClasses;
@@ -462,7 +462,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * if true, manifest entries with lookupOnly=true are included in SWC catalog. default is false. This exists only so
      * that manifests can mention classes that come in from filespec rather than classpath, e.g. in playerglobal.swc.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean includeLookupOnly;
@@ -470,7 +470,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * This is equilvalent to the <code>include-resource-bundles</code> option of the compc compiler.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;includeResourceBundles&gt;
      *   &lt;bundle&gt;SharedResources&lt;/bundle&gt;
@@ -478,7 +478,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *   &lt;bundle&gt;containers&lt;/bundle&gt;
      * &lt;/includeResourceBundles&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     protected String[] includeResourceBundles;
@@ -488,13 +488,13 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * <code>includes</code> option of the mxmlc or compc compilers. An array of definitions (for example, classes,
      * functions, variables, or namespaces).<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;includes&gt;
      *   &lt;include&gt;com.acme.AClass&lt;/include&gt;
      * &lt;/includes&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] includes;
@@ -503,7 +503,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * If the <code>incremental</code> input argument is <code>false</code>, this method recompiles all parts of the
      * object. If the <code>incremental</code> input argument is <code>true</code>, this method compiles only the parts
      * of the object that have changed since the last compilation.
-     * 
+     *
      * @parameter default-value="false" expression="${incremental}"
      */
     private boolean incremental;
@@ -512,7 +512,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Instructs the compiler to keep a style sheet's type selector in a SWF file, even if that type (the class) is not
      * used in the application. This is equivalent to using the <code>compiler.keep-all-type-selectors</code> option of
      * the mxmlc or compc compilers.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean keepAllTypeSelectors;
@@ -520,14 +520,14 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Keep the following AS3 metadata in the bytecodes.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;keepAs3Metadatas&gt;
      *   &lt;keepAs3Metadata&gt;Bindable&lt;/keepAs3Metadata&gt;
      *   &lt;keepAs3Metadata&gt;Events&lt;/keepAs3Metadata&gt;
      * &lt;/keepAs3Metadatas&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] keepAs3Metadatas;
@@ -535,7 +535,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Turn on writing of generated/*.as files to disk. These files are generated by the compiler during mxml
      * translation and are helpful with understanding and debugging Flex applications.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean keepGeneratedActionscript;
@@ -543,20 +543,20 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * licenses: specifies a list of product and serial number pairs.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;licenses&gt;
      *   &lt;flexbuilder3&gt;xxxx-xxxx-xxxx-xxxx&lt;/flexbuilder3&gt;
      * &lt;/licenses&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private Map<String, String> licenses;
 
     /**
      * Uses the default compiler options as base
-     * 
+     *
      * @parameter default-value="false"
      */
     protected boolean linkReport;
@@ -570,7 +570,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Sets a list of artifacts to omit from linking when building an application. This is equivalent to using the
      * <code>load-externs</code> option of the mxmlc or compc compilers.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;loadExterns&gt;
      *   &lt;loadExtern&gt;
@@ -585,9 +585,9 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *   &lt;/loadExtern&gt;
      * &lt;/loadExterns&gt;
      * </pre>
-     * 
+     *
      * You can also use dependency with type "xml" and classifier "link-report"
-     * 
+     *
      * @parameter
      */
     protected MavenArtifact[] loadExterns;
@@ -596,7 +596,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Sets the locales that the compiler uses to replace <code>{locale}</code> tokens that appear in some configuration
      * values. This is equivalent to using the <code>compiler.locale</code> option of the mxmlc or compc compilers. <BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;locales&gt;
      *    &lt;locale&gt;en_US&lt;/locale&gt;
@@ -604,7 +604,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *    &lt;locale&gt;es_ES&lt;/locale&gt;
      * &lt;/locales&gt;
      * </pre>
-     * 
+     *
      * @parameter
      * @deprecated
      */
@@ -613,7 +613,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * When true resources are compiled into Application or Library. When false resources are compiled into separated
      * Application or Library files. If not defined no resourceBundle generation is done
-     * 
+     *
      * @parameter
      * @deprecated
      */
@@ -622,7 +622,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * SWF metadata useless there is no API to read it.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;metadata&gt;
      *   &lt;contributor&gt;buddy&lt;/contributor&gt;
@@ -641,7 +641,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *   &lt;/titles&gt;
      * &lt;/metadata&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private Metadata metadata;
@@ -649,7 +649,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Specify a URI to associate with a manifest of components for use as MXML elements.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;namespaces&gt;
      *   &lt;namespace&gt;
@@ -658,21 +658,21 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *   &lt;/namespace&gt;
      * &lt;/namespaces&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private Namespace[] namespaces;
 
     /**
      * Enable post-link SWF optimization.
-     * 
+     *
      * @parameter default-value="true"
      */
     private boolean optimize;
 
     /**
      * The filename of the compiled artifact
-     * 
+     *
      * @parameter
      */
     private File output;
@@ -681,7 +681,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * policyFileUrls array of policy file URLs. Each entry in the rslUrls array must have a corresponding entry in this
      * array. A policy file may be needed in order to allow the player to read an RSL from another domain. If a policy
      * file is not required, then set it to an empty string. Accept some special tokens:
-     * 
+     *
      * <pre>
      * {contextRoot}        - replace by defined context root
      * {groupId}            - replace by library groupId
@@ -689,23 +689,23 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * {version}            - replace by library version
      * {extension}          - replace by library extension swf or swz
      * </pre>
-     * 
+     *
      * <BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;policyFileUrls&gt;
      *   &lt;url&gt;/{contextRoot}/rsl/policy-{artifactId}-{version}.xml&lt;/url&gt;
      * &lt;/policyFileUrls&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] policyFileUrls;
 
     /**
      * Wether to print the compiler configuration in the build log or not.
-     * 
+     *
      * @parameter default-value="true"
      */
     protected boolean printCompilerConfiguration;
@@ -713,7 +713,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Quick compile mode. When true, flexmojos will check if the last artifact available at maven repository is newer
      * then sources. If so, will not recompile.
-     * 
+     *
      * @parameter default-value="false" expression="${quick.compile}"
      */
     private boolean quick;
@@ -721,18 +721,18 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the metadata section of the application SWF. This is equivalent to the <code>raw-metadata</code> option of
      * the mxmlc or compc compilers. Need a well-formed XML fragment
-     * 
+     *
      * @parameter
      */
     private String rawMetadata;
 
     /**
      * Define the base path to locate resouce bundle files Accept some special tokens:
-     * 
+     *
      * <pre>
      * {locale}     - replace by locale name
      * </pre>
-     * 
+     *
      * @parameter default-value="${basedir}/src/main/locales/{locale}"
      */
     protected String resourceBundlePath;
@@ -740,7 +740,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * rslUrls array of URLs. The first RSL URL in the list is the primary RSL. The remaining RSL URLs will only be
      * loaded if the primary RSL fails to load. Accept some special tokens:
-     * 
+     *
      * <pre>
      * {contextRoot}        - replace by defined context root
      * {groupId}            - replace by library groupId
@@ -748,24 +748,24 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * {version}            - replace by library version
      * {extension}          - replace by library extension swf or swz
      * </pre>
-     * 
+     *
      * default-value="/{contextRoot}/rsl/{artifactId}-{version}.{extension}" <BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;rslUrls&gt;
      *   &lt;url&gt;/{contextRoot}/rsl/{artifactId}-{version}.{extension}&lt;/url&gt;
      * &lt;/rslUrls&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] rslUrls;
 
     /**
      * Resource module or resource library output path
-     * 
-     * @parameter 
+     *
+     * @parameter
      *            default-value="${project.build.directory}/locales/${project.artifactId}-${project.version}-{locale}.{extension}"
      */
     private String runtimeLocaleOutputPath;
@@ -773,7 +773,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the locales that should be used to generate resource bundles. <BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;runtimeLocales&gt;
      *    &lt;locale&gt;en_US&lt;/locale&gt;
@@ -781,7 +781,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *    &lt;locale&gt;es_ES&lt;/locale&gt;
      * &lt;/runtimeLocales&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     protected String[] runtimeLocales;
@@ -789,7 +789,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the default script execution limits (which can be overridden by root attributes). This is equivalent to
      * using the <code>default-script-limits</code> option of the mxmlc or compc compilers. Execution time, in seconds
-     * 
+     *
      * @parameter default-value="60"
      */
     private int scriptMaxExecutionTime;
@@ -797,7 +797,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Sets the default script execution limits (which can be overridden by root attributes). This is equivalent to
      * using the <code>default-script-limits</code> option of the mxmlc or compc compilers. Recursion depth
-     * 
+     *
      * @parameter default-value="1000"
      */
     private int scriptMaxRecursionDepth;
@@ -806,7 +806,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * Sets the location of the Flex Data Services service configuration file. This is equivalent to using the
      * <code>compiler.services</code> option of the mxmlc and compc compilers. If not define will look inside resources
      * directory for services-config.xml
-     * 
+     *
      * @parameter
      */
     private File services;
@@ -814,7 +814,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Run the AS3 compiler in a mode that detects legal but potentially incorrect code. Equivalent compiler option:
      * warnings
-     * 
+     *
      * @parameter default-value="true"
      */
     private boolean showWarnings;
@@ -822,15 +822,15 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * List of path elements that form the roots of ActionScript class hierarchies.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;sourcePaths&gt;
      *    &lt;path&gt;${baseDir}/src/main/flex&lt;/path&gt;
      * &lt;/sourcePaths&gt;
      * </pre>
-     * 
+     *
      * By default use Maven source and resources folders.
-     * 
+     *
      * @parameter
      */
     // * @readonly
@@ -845,14 +845,14 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * compiling the framework classes into your SWF file.
      * </p>
      * http://livedocs.adobe.com/flex/3/html/help.html?content=rsl_09.html
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean staticLinkRuntimeSharedLibraries;
 
     /**
      * Run the AS3 compiler in strict error checking mode.
-     * 
+     *
      * @parameter default-value="true"
      */
     private boolean strict;
@@ -861,24 +861,24 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * specifies the version of the player the application is targeting. Features requiring a later version will not be
      * compiled into the application. The minimum value supported is "9.0.0". If not defined will take the default value
      * from current playerglobal dependency.
-     * 
+     *
      * @parameter
      */
     private String targetPlayer;
 
     /**
      * List of CSS or SWC files to apply as a theme. <>BR Usage:
-     * 
+     *
      * <pre>
      * &lt;themes&gt;
      *    &lt;theme&gt;css/main.css&lt;/theme&gt;
      * &lt;/themes&gt;
      * </pre>
-     * 
+     *
      * If you are using SWC theme should be better keep it's version controlled, so is advised to use a dependency with
      * theme scope.<BR>
      * Like this:
-     * 
+     *
      * <pre>
      * &lt;dependency&gt;
      *   &lt;groupId&gt;com.acme&lt;/groupId&gt;
@@ -888,14 +888,14 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      *   &lt;version&gt;1.0&lt;/version&gt;
      * &lt;/dependency&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] themes;
 
     /**
      * Enables SWFs to access the network.
-     * 
+     *
      * @parameter default-value="true"
      */
     private boolean useNetwork;
@@ -903,14 +903,14 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Determines whether resources bundles are included in the application. This is equivalent to using the
      * <code>compiler.use-resource-bundle-metadata</code> option of the mxmlc or compc compilers.
-     * 
+     *
      * @parameter default-value="true"
      */
     private boolean useResourceBundleMetadata;
 
     /**
      * Turns on the display of stack traces for uncaught runtime errors.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean verboseStacktraces;
@@ -918,14 +918,14 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Verifies the RSL loaded has the same digest as the RSL specified when the application was compiled. This is
      * equivalent to using the <code>verify-digests</code> option in the mxmlc compiler.
-     * 
+     *
      * @parameter default-value="true"
      */
     private boolean verifyDigests;
 
     /**
      * Enables checking of the following ActionScript warnings:
-     * 
+     *
      * <pre>
      * --compiler.warn-array-tostring-changes
      * --compiler.warn-assignment-within-conditional
@@ -964,17 +964,17 @@ public abstract class AbstractCompilerMojo<E extends Builder>
      * --compiler.warn-unlikely-function-value
      * --compiler.warn-xml-class-has-changed
      * </pre>
-     * 
+     *
      * <BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;warnigs&gt;
      *   &lt;arrayTostringChanges&gt;true&lt;/arrayTostringChanges&gt;
      *   &lt;assignmentWithinConditional&gt;false&lt;/assignmentWithinConditional&gt;
      * &lt;/warnigs&gt;
      * </pre>
-     * 
+     *
      * @see Warning
      * @parameter
      */
@@ -1099,7 +1099,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
         configuration.addRuntimeSharedLibraryPath( artifactPath, rslUrls, rslPolicyFileUrls );
 
         // when -static-link-runtime-shared-libraries=true ignore -runtime-shared-library-path,
-        // not put all RSLs to -library-path (tested on 3.2.0.3958 and 4.0.0.4600)
+        // not put all RSLs to -library-path (tested on 3.5.0.12683B and 4.0.0.4600)
         if ( staticLinkRuntimeSharedLibraries )
         {
             configuration.addExternalLibraryPath( new File[] { artifactFile } );
@@ -1196,7 +1196,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Resolves all runtime libraries, that includes RSL and framework CACHING
-     * 
+     *
      * @throws MojoExecutionException
      */
     private void callRuntimeDependencyResolver()
@@ -1259,7 +1259,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Setup builder configuration
-     * 
+     *
      * @throws MojoExecutionException
      * @throws MojoFailureException
      */
@@ -1680,7 +1680,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Configure warnings
-     * 
+     *
      * @param cfg Configuration instance to configure
      */
     private void configureWarnings( Configuration cfg )
@@ -1813,7 +1813,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
     /**
      * Scan the passed paths looking for Actionscript classes (namely compilation units ending in .as or .mxml as a
      * default).
-     * 
+     *
      * @param includeAsClasses The paths to scan looking for classes
      * @return An array containing the name of the found classes
      * @throws MojoFailureException
@@ -1913,7 +1913,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Get array of files for dependency artifacts for given scope
-     * 
+     *
      * @param scopes for which to get files
      * @return Array of dependency artifact files
      * @throws MojoExecutionException
@@ -1939,7 +1939,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Get Fonts snapshot
-     * 
+     *
      * @return File of font snapshot
      * @throws MojoExecutionException
      */
@@ -2092,7 +2092,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Get resource bundles for the given locale
-     * 
+     *
      * @param requestedLocales the locale for which you want bundles, null for all locales
      * @return Array of resource bundle files
      * @throws MojoExecutionException
@@ -2136,7 +2136,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Gets RslPolicyFileUrls for given artifact
-     * 
+     *
      * @param artifact
      * @return Array of urls
      */
@@ -2160,7 +2160,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Get RslUrls
-     * 
+     *
      * @param artifact
      * @param extension
      * @return Array of url's
@@ -2414,7 +2414,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Loads compilation data to support incremental compilation
-     * 
+     *
      * @return InputStream of compilation data
      * @throws FileNotFoundException
      */
@@ -2504,7 +2504,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Writes compilation data to a file to support incremental compilation
-     * 
+     *
      * @return OutputStream with compilation data
      * @throws FileNotFoundException
      */
@@ -2816,7 +2816,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Writes configuration report to file
-     * 
+     *
      * @param report contains info to write
      * @throws MojoExecutionException throw if an error occurs during writing of report to file
      */
@@ -2828,7 +2828,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Writes configuration report to file
-     * 
+     *
      * @param report contains info to write
      * @throws MojoExecutionException throw if an error occurs during writing of report to file
      */
@@ -2840,7 +2840,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Writes a report to a file.
-     * 
+     *
      * @param report Report containing info to write to file
      * @param type Type of report to write. Valid types are <code>link</code> and <code>config</code>.
      * @throws MojoExecutionException throw if an error occurs during writing of report to file
@@ -2882,7 +2882,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Write a resource bundle
-     * 
+     *
      * @param report from which to obtain info about resource bundle
      * @throws MojoExecutionException
      */
@@ -2924,7 +2924,7 @@ public abstract class AbstractCompilerMojo<E extends Builder>
 
     /**
      * Write resource bundle
-     * 
+     *
      * @param bundles
      * @param locale
      * @param localePath

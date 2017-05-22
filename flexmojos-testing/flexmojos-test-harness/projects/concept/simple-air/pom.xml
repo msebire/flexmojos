@@ -52,15 +52,15 @@
       </plugin>
     </plugins>
   </build>
-  
+
   <dependencies>
     <!-- Air SDK dependencies -->
     <dependency>
       <groupId>com.adobe.flex.framework</groupId>
       <artifactId>air-framework</artifactId>
-      <version>3.2.0.3958</version>
+      <version>3.5.0.12683B</version>
       <type>pom</type>
     </dependency>
   </dependencies>
-  
+
 </project>

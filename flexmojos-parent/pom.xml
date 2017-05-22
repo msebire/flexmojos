@@ -54,7 +54,7 @@
 
   <properties>
     <commons_io.version>1.4</commons_io.version>
-    <flex.sdk.version>3.2.0.3958</flex.sdk.version>
+    <flex.sdk.version>3.5.0.12683B</flex.sdk.version>
     <maven.version>2.0.9</maven.version>
     <plexus.version>1.0-beta-3.0.6</plexus.version>
 
@@ -369,7 +369,7 @@
       <dependency>
         <groupId>com.adobe.flex</groupId>
         <artifactId>adt</artifactId>
-        <version>3.2.0.3958</version>
+        <version>3.5.0.12683B</version>
         <scope>provided</scope>
       </dependency>
 
