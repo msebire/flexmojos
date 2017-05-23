@@ -73,12 +73,12 @@
         </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>2.3</version>
+          <version>2.4.3</version>
           <dependencies>
             <dependency>
               <groupId>org.apache.maven.shared</groupId>
               <artifactId>maven-filtering</artifactId>
-              <version>1.0-beta-3-SONATYPE-682132</version>
+              <version>1.0</version>
             </dependency>
           </dependencies>
         </plugin>
