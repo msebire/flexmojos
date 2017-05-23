@@ -54,6 +54,11 @@
     <maven.version>2.0.9</maven.version>
     <plexus.version>1.0-beta-3.0.6</plexus.version>
 
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.5</maven.compiler.source>
+    <maven.compiler.target>1.5</maven.compiler.target>
+    <maven.compiler.encoding>${project.build.sourceEncoding}</maven.compiler.encoding>
+
     <!-- need due grid limitations -->
     <flexReleaseUrl>http://repository.sonatype.org/content/repositories/flexmojos-releases</flexReleaseUrl>
     <flexSnapshotUrl>http://repository.sonatype.org/content/repositories/flexmojos-snapshots</flexSnapshotUrl>
@@ -68,7 +73,7 @@
           <artifactId>aspectj-maven-plugin</artifactId>
           <version>1.2</version>
           <configuration>
-            <complianceLevel>1.5</complianceLevel>
+            <complianceLevel>${maven.compiler.source}</complianceLevel>
           </configuration>
         </plugin>
         <plugin>
@@ -165,8 +170,9 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <encoding>${maven.compiler.encoding}</encoding>
         </configuration>
       </plugin>
       <plugin>
