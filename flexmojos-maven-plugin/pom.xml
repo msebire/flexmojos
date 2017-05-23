@@ -157,22 +157,22 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>flexmojos-generator-api</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>flexmojos-generator-graniteds-2.1.0</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>flexmojos-generator-constraints</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>flexmojos-generator-maven-plugin</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
       <type>maven-plugin</type>
     </dependency>
 
