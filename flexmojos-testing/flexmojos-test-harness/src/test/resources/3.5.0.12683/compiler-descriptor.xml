@@ -58,12 +58,12 @@
 
   <defaults>
     <groupId>com.adobe.flex.compiler</groupId>
-    <version>3.5.0.12683</version>
+    <version>3.5.0.12683B</version>
   </defaults>
 
   <artifacts>
     <artifact>
-    <!-- 
+    <!--
 asc.jar
 asdoc.jar
 batik-all-flex.jar
@@ -84,7 +84,7 @@ swfutils.jar
 xalan.jar
 xercesImpl.jar
 xercesPatch.jar
-xmlParserAPIs.jar    
+xmlParserAPIs.jar
      -->
       <groupId>com.adobe.flex</groupId>
       <artifactId>compiler</artifactId>

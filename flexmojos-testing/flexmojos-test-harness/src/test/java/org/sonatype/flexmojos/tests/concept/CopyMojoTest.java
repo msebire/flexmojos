@@ -41,7 +41,7 @@ public class CopyMojoTest
         Assert.assertNotNull( war.getEntry( "copy-swf-1.0-SNAPSHOT.swf" ), "Swf entry not present at war!" );
         Assert.assertNotNull( war.getEntry( "copy-swf-1.0-SNAPSHOT-module1.swf" ), "Swf entry not present at war!" );
         Assert.assertNotNull( war.getEntry( "copy-swf-1.0-SNAPSHOT-module2.swf" ), "Swf entry not present at war!" );
-        Assert.assertNotNull( war.getEntry( "rsls/framework-3.5.0.12683.swf" ), "Rsl entry not present at war!" );
+        Assert.assertNotNull( war.getEntry( "rsls/framework-3.5.0.12683B.swf" ), "Rsl entry not present at war!" );
     }
 
 }

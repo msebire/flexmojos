@@ -50,26 +50,26 @@
 			-->
       <groupId>com.adobe.flex.framework</groupId>
       <artifactId>playerglobal</artifactId>
-      <version>9-3.5.0.12683</version>
+      <version>9-3.5.0.12683B</version>
       <type>swc</type>
       <scope>external</scope>
     </dependency>
     <dependency>
       <groupId>com.adobe.flex.framework</groupId>
       <artifactId>framework</artifactId>
-      <version>3.5.0.12683</version>
+      <version>3.5.0.12683B</version>
       <type>swc</type>
     </dependency>
     <dependency> <!-- useless, just a beacon to en_US -->
       <groupId>com.adobe.flex.framework</groupId>
       <artifactId>framework</artifactId>
-      <version>3.5.0.12683</version>
+      <version>3.5.0.12683B</version>
       <type>rb.swc</type>
     </dependency>
     <dependency> <!-- normally is not present at pom -->
       <groupId>com.adobe.flex.framework</groupId>
       <artifactId>framework</artifactId>
-      <version>3.5.0.12683</version>
+      <version>3.5.0.12683B</version>
       <type>rb.swc</type>
       <classifier>en_US</classifier>
     </dependency>
