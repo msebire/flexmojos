@@ -58,7 +58,7 @@
 
   <defaults>
     <groupId>com.adobe.flex.compiler</groupId>
-    <version>3.2.0.3958</version>
+    <version>3.5.0.12683</version>
   </defaults>
 
   <artifacts>

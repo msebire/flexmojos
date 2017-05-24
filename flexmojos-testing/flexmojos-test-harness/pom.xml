@@ -154,7 +154,7 @@
 
       <plugin>
         <artifactId>maven-invoker-plugin</artifactId>
-        <version>1.6-SONATYPE-r940877</version>
+        <version>1.6</version>
         <configuration>
           <localRepositoryPath>${fake-repo}</localRepositoryPath>
           <extraArtifacts>
@@ -165,8 +165,6 @@
 
             <xml>emma:emma:2.0.5312</xml>
 
-            <xml>com.adobe.flex:compiler:2.0.1.180927:pom</xml>
-            <xml>com.adobe.flex.framework:flex-framework:2.0.1.180927:pom</xml>
             <xml>com.adobe.flex:compiler:${flex.sdk.version}:pom</xml>
             <xml>com.adobe.flex.framework:air-framework:${flex.sdk.version}:pom</xml>
             <xml>com.adobe.flex.framework:flex-framework:${flex.sdk.version}:pom</xml>
