@@ -66,7 +66,7 @@
 
   <artifacts>
     <!-- rsls -->
-<!-- 
+<!--
 datavisualization_4.0.0.13875.swf
 framework_4.0.0.13875.swf
 osmf_flex.4.0.0.13495.swf
@@ -74,7 +74,7 @@ rpc_4.0.0.13875.swf
 sparkskins_4.0.0.13875.swf
 spark_4.0.0.13875.swf
 textLayout_1.0.0.594.swf
- -->    
+ -->
     <artifact>
       <artifactId>datavisualization</artifactId>
       <type>swf</type>
@@ -122,7 +122,7 @@ textLayout_1.0.0.594.swf
     </artifact>
 
     <!-- sources -->
-<!-- 
+<!--
 air
 airframework
 airspark
@@ -267,7 +267,7 @@ utilities
     -->
 
     <!-- automation framework -->
-<!-- 
+<!--
 automation.swc
 automation_agent.swc
 automation_air.swc
@@ -384,7 +384,7 @@ qtp_air.swc
     </artifact>
 
     <!-- artifacts shared between air and flex frameworks -->
-<!-- 
+<!--
 datavisualization.swc
 flash-integration.swc
 flex.swc
@@ -400,7 +400,7 @@ utilities.swc
       <artifactId>common-framework</artifactId>
       <type>pom</type>
       <dependencies>
-<!-- FLEXMOJOS-243 
+<!-- FLEXMOJOS-243
 Flex 4 requires a certain RSL loading order to avoid runtime errors (see 4.0.0.10845 flex-config.xml):
 1. textLayout
 2. osmf
@@ -409,7 +409,7 @@ Flex 4 requires a certain RSL loading order to avoid runtime errors (see 4.0.0.1
 5. sparkskins
 6. rpc
 7. datavisualization
--->      
+-->
         <dependency>
           <artifactId>text-layout</artifactId>
           <type>swc</type>
@@ -492,7 +492,7 @@ Flex 4 requires a certain RSL loading order to avoid runtime errors (see 4.0.0.1
       <type>swc</type>
       <location>frameworks/libs/datavisualization.swc</location>
     </artifact>
-    
+
     <artifact>
       <artifactId>flash-integration</artifactId>
       <type>swc</type>
@@ -557,7 +557,7 @@ Flex 4 requires a certain RSL loading order to avoid runtime errors (see 4.0.0.1
       <type>swc</type>
       <location>frameworks/libs/utilities.swc</location>
     </artifact>
-    
+
     <!-- exclusive flex framework -->
     <artifact>
       <artifactId>flex-framework</artifactId>
@@ -596,7 +596,7 @@ Flex 4 requires a certain RSL loading order to avoid runtime errors (see 4.0.0.1
     </artifact>
 
     <!-- exclusive air framework -->
-<!-- 
+<!--
 airframework.swc
 airglobal.swc
 airspark.swc
@@ -642,7 +642,7 @@ servicemonitor.swc
         </dependency>
       </dependencies>
     </artifact>
-    
+
     <artifact>
       <artifactId>airframework</artifactId>
       <type>swc</type>
@@ -703,9 +703,9 @@ servicemonitor.swc
       <type>swc</type>
       <location>frameworks/libs/air/2.0/aircore.swc</location>
     </artifact>
-    
+
     <!-- locales -->
-<!-- 
+<!--
 da_DK
 de_DE
 en_US
@@ -788,7 +788,7 @@ zh_TW
       <type>rb.swc</type>
       <location>frameworks/locale/en_US/textLayout_rb.swc</location>
     </artifact>
-<!-- 
+<!--
 airframework_rb.swc
 airspark_rb.swc
 automation_agent_rb.swc
