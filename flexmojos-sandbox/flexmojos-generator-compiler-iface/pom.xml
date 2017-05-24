@@ -44,7 +44,7 @@
     <dependency>
       <groupId>org.sonatype.flexmojos</groupId>
       <artifactId>flexmojos-generator-api</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ws.jaxme</groupId>
@@ -60,7 +60,7 @@
     <dependency>
       <groupId>com.adobe.flex</groupId>
       <artifactId>compiler</artifactId>
-      <version>${flex.sdk.version}</version> 
+      <version>${flex.sdk.version}</version>
       <type>pom</type>
     </dependency>
   </dependencies>

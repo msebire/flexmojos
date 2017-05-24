@@ -48,7 +48,7 @@ import org.sonatype.flexmojos.utilities.MavenUtils;
 
 /**
  * Goal to copy flex artifacts into war projects.
- * 
+ *
  * @author Marvin Herman Froeder (velo.br@gmail.com)
  * @since 3.0
  * @goal copy-flex-resources
@@ -67,7 +67,7 @@ public class CopyMojo
 
     /**
      * LW : needed for expression evaluation The maven MojoExecution needed for ExpressionEvaluation
-     * 
+     *
      * @parameter expression="${session}"
      * @required
      * @readonly
@@ -98,7 +98,7 @@ public class CopyMojo
 
     /**
      * The maven project.
-     * 
+     *
      * @parameter expression="${project}"
      * @required
      * @readonly
@@ -110,7 +110,7 @@ public class CopyMojo
      * @required
      * @readonly
      */
-    private List<?> remoteRepositories;
+    private List<ArtifactRepository> remoteRepositories;
 
     /**
      * @component
@@ -119,35 +119,35 @@ public class CopyMojo
 
     /**
      * Skip mojo execution
-     * 
+     *
      * @parameter default-value="false" expression="${flexmojos.copy.skip}"
      */
     private boolean skip;
 
     /**
      * When true will strip artifact and version information from the built MXML module artifact.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean stripModuleArtifactInfo;
 
     /**
      * Strip artifact version during copy
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean stripVersion;
 
     /**
      * Use final name if/when available
-     * 
+     *
      * @parameter default-value="true"
      */
     private boolean useFinalName;
 
     /**
      * The directory where the webapp is built.
-     * 
+     *
      * @parameter expression="${project.build.directory}/${project.build.finalName}"
      * @required
      */

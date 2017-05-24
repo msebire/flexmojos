@@ -50,7 +50,7 @@ import eu.cedarsoft.utils.ZipExtractor;
 
 /**
  * This goal generate the html wrapper to Flex applications, like what is done by flex builder.
- * 
+ *
  * @author Marvin Herman Froeder (velo.br@gmail.com)
  * @since 1.0
  * @phase generate-resources
@@ -78,7 +78,7 @@ public class HtmlWrapperMojo
 
     /**
      * LW : needed for expression evaluation The maven MojoExecution needed for ExpressionEvaluation
-     * 
+     *
      * @parameter expression="${session}"
      * @required
      * @readonly
@@ -89,7 +89,7 @@ public class HtmlWrapperMojo
      * final name of html file<br/>
      * <br/>
      * This is now deprecated, and only supplied for backwards compatibility.
-     * 
+     *
      * @parameter default-value="${project.build.finalName}"
      * @deprecated
      */
@@ -111,14 +111,14 @@ public class HtmlWrapperMojo
      * output Directory to store final html <br/>
      * <br/>
      * This is ignored if running in project with war packaging.
-     * 
+     *
      * @parameter default-value="${project.build.directory}"
      */
     private File outputDirectory;
 
     /**
      * Used to define parameters that will be replaced. Usage:
-     * 
+     *
      * <pre>
      *  &lt;parameters&gt;
      *      &lt;swf&gt;${build.finalName}&lt;/swf&gt;
@@ -126,7 +126,7 @@ public class HtmlWrapperMojo
      *      &lt;height&gt;100%&lt;/height&gt;
      *  &lt;/parameters&gt;
      * </pre>
-     * 
+     *
      * The following prameters wil be injected if not defined:
      * <ul>
      * title
@@ -158,14 +158,14 @@ public class HtmlWrapperMojo
      * If you are using a custom template, and wanna some extra parameters, this is the right place to define it. <br/>
      * <br/>
      * This is ignored if running in project with war packaging.
-     * 
+     *
      * @parameter
      */
-    private Map<String, String> parameters;
+    private Map<String, Object> parameters;
 
     /**
      * The maven project.
-     * 
+     *
      * @parameter expression="${project}"
      * @required
      * @readonly
@@ -177,7 +177,7 @@ public class HtmlWrapperMojo
      * @required
      * @readonly
      */
-    private List<?> remoteRepositories;
+    private List<ArtifactRepository> remoteRepositories;
 
     /**
      * @component
@@ -193,7 +193,7 @@ public class HtmlWrapperMojo
      * specifies the version of the player the application is targeting. Features requiring a later version will not be
      * compiled into the application. The minimum value supported is "9.0.0". If not defined will take the default value
      * from current playerglobal dependency.
-     * 
+     *
      * @parameter
      */
     private String targetPlayer;
@@ -201,7 +201,7 @@ public class HtmlWrapperMojo
     /**
      * Files to not interpolate while copying files. Usually binary files. Accepts wild cards. By default, many common
      * binary formats are excluded (see useDefaultBinaryExcludes). Usage:
-     * 
+     *
      * <pre>
      *  &lt;templateExclusions&gt;
      *      &lt;String&gt;**&#047;*.xml&lt;/String&gt;
@@ -209,14 +209,14 @@ public class HtmlWrapperMojo
      *      &lt;String&gt;another-directory/**&#047;*.jsp&lt;/String&gt;
      *  &lt;/templateExclusions&gt;
      * </pre>
-     * 
+     *
      * In the above, the following applies in order:
      * <ol>
      * <li>Exclude all xml files</li>
      * <li>Exclude everything in the directory 'some-directory'</li>
      * <li>Exclude all jsp files in the directory 'another-directory'</li>
      * </ol>
-     * 
+     *
      * @parameter
      */
     private String[] templateExclusions;
@@ -225,7 +225,7 @@ public class HtmlWrapperMojo
      * Files to interpolate while copying files. Accepts wild cards. By default includes all files. Any patterns defined
      * in templateExclusions, the default binaries excludes, or default plexus excludes (svn, cvs, temp files, etc) will
      * be applied on top of this, so matching a pattern here does not force that file to be wrapped. Usage:
-     * 
+     *
      * <pre>
      *  &lt;templateExclusions&gt;
      *      &lt;String&gt;**&#047;*.xml&lt;/String&gt;
@@ -233,14 +233,14 @@ public class HtmlWrapperMojo
      *      &lt;String&gt;another-directory/**&#047;*.jsp&lt;/String&gt;
      *  &lt;/templateExclusions&gt;
      * </pre>
-     * 
+     *
      * In the above, the following applies in order:
      * <ol>
      * <li>Include all xml files</li>
      * <li>Include everything in the directory 'some-directory'</li>
      * <li>Include all jsp files in the directory 'another-directory'</li>
      * </ol>
-     * 
+     *
      * @parameter
      */
     private String[] templateInclusions;
@@ -249,7 +249,7 @@ public class HtmlWrapperMojo
      * output Directory to store final html <br/>
      * <br/>
      * This is ignored if running in project with war packaging.
-     * 
+     *
      * @parameter default-value="${project.build.directory}/html-wrapper-template"
      */
     private File templateOutputDirectory;
@@ -277,14 +277,14 @@ public class HtmlWrapperMojo
      * embed:no-player-detection-with-history
      * </ul>
      * To point to a zip file you must use a URI like this:
-     * 
+     *
      * <pre>
      * zip:/myTemplateFolder/template.zip
      * zip:c:/myTemplateFolder/template.zip
      * </pre>
-     * 
+     *
      * To point to a folder use a URI like this:
-     * 
+     *
      * <pre>
      * folder:/myTemplateFolder/
      * folder:c:/myTemplateFolder/
@@ -293,7 +293,7 @@ public class HtmlWrapperMojo
      * This mojo will look for <tt>index.template.html</tt> for replace parameters. <br/>
      * <br/>
      * This is ignored if running in project with war packaging.
-     * 
+     *
      * @parameter default-value="embed:express-installation-with-history"
      */
     private String templateURI;
@@ -302,7 +302,7 @@ public class HtmlWrapperMojo
      * Controls whether or not common binary file types are excluded by default when choosing what files to wrap. Useful
      * to set to false if for some reason you decide to name a wrapped file something like "index.exe" or
      * "html-wrapper.png" for some unanticipated reason.
-     * 
+     *
      * @parameter default-value="true"
      */
     private boolean useDefaultBinaryExcludes;
@@ -310,7 +310,7 @@ public class HtmlWrapperMojo
     /**
      * In the context of a war project, this specifies the external artifact that the wrapper parameters will be
      * extracted from. Usage:
-     * 
+     *
      * <pre>
      *  &lt;wrapperArtifact&gt;
      *      &lt;groupId&gt;com.company&lt;/groupId&gt;
@@ -319,10 +319,10 @@ public class HtmlWrapperMojo
      *      &lt;classifier&gt;prod%&lt;/classifier&gt;
      *  &lt;/wrapperArtifact&gt;
      * </pre>
-     * 
+     *
      * Both groupId and artifactId are required, but version and classifier are optional and can be inferred from a
      * dependency if present (for example when the copy-flex-resources goal is executed).
-     * 
+     *
      * @parameter
      */
     private Map<String, String> wrapperArtifact;
@@ -592,7 +592,7 @@ public class HtmlWrapperMojo
 
         if ( parameters == null )
         {
-            parameters = new HashMap<String, String>();
+            parameters = new HashMap<String, Object>();
         }
 
         if ( !parameters.containsKey( "title" ) )
@@ -638,7 +638,7 @@ public class HtmlWrapperMojo
     /**
      * Loads the parameters value (from plugin configuration) from an externally referenced dependency pom rather than
      * the pom for the current project.
-     * 
+     *
      * @throws MojoExecutionException
      * @throws MojoFailureException
      */
@@ -706,7 +706,7 @@ public class HtmlWrapperMojo
 
     /**
      * Tries to construct project for the provided artifact
-     * 
+     *
      * @param artifact
      * @return MavenProject for the given artifact
      * @throws MojoExecutionException
@@ -727,7 +727,7 @@ public class HtmlWrapperMojo
     /**
      * Insert flexmojos wrapper process into maven-war-plugin's process by re-routing its warSourceDirectory
      * configuration to this.outputDirectory and using its original warSourceDirectory as the value for this.templateURI
-     * 
+     *
      * @throws MojoExecutionException
      * @throws MojoFailureException
      */

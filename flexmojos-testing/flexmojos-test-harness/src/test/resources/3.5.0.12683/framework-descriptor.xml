@@ -61,7 +61,7 @@
 
   <defaults>
     <groupId>com.adobe.flex.framework</groupId>
-    <version>3.5.0.12683</version>
+    <version>3.5.0.12683B</version>
   </defaults>
 
   <artifacts>
@@ -69,22 +69,22 @@
     <artifact>
       <artifactId>framework</artifactId>
       <type>swf</type>
-      <location>frameworks/rsls/framework_3.5.0.12683.swf</location>
+      <location>frameworks/rsls/framework_3.5.0.12683B.swf</location>
     </artifact>
     <artifact>
       <artifactId>framework</artifactId>
       <type>swz</type>
-      <location>frameworks/rsls/framework_3.5.0.12683.swz</location>
+      <location>frameworks/rsls/framework_3.5.0.12683B.swz</location>
     </artifact>
     <artifact>
       <artifactId>rpc</artifactId>
       <type>swf</type>
-      <location>frameworks/rsls/rpc_3.5.0.12683.swf</location>
+      <location>frameworks/rsls/rpc_3.5.0.12683B.swf</location>
     </artifact>
     <artifact>
       <artifactId>rpc</artifactId>
       <type>swz</type>
-      <location>frameworks/rsls/rpc_3.5.0.12683.swz</location>
+      <location>frameworks/rsls/rpc_3.5.0.12683B.swz</location>
     </artifact>
 
     <!-- sources -->
@@ -236,7 +236,7 @@
         </dependency>
       </dependencies>
     </artifact>
-    
+
     <artifact>
       <artifactId>flex</artifactId>
       <type>swc</type>
@@ -319,7 +319,7 @@
     </artifact>
 
     <!-- locales -->
-    <!-- 
+    <!--
 en_US
      -->
     <artifact>

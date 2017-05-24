@@ -45,7 +45,7 @@ import flex2.tools.oem.Report;
 
 /**
  * Goal to compile the Flex test sources.
- * 
+ *
  * @author Marvin Herman Froeder (velo.br@gmail.com)
  * @since 1.0
  * @goal test-compile
@@ -60,28 +60,28 @@ public class TestCompileMojo
 
     /**
      * Files to exclude from testing. If not defined, assumes no exclusions
-     * 
+     *
      * @parameter
      */
     private String[] excludeTestFiles;
 
     /**
      * Option to specify the forking mode. Can be "once" or "always". Always fork flashplayer per test class.
-     * 
+     *
      * @parameter default-value="once" expression="${forkMode}"
      */
     private String forkMode;
 
     /**
      * File to be tested. If not defined assumes Test*.as and *Test.as
-     * 
+     *
      * @parameter
      */
     private String[] includeTestFiles;
 
     /**
      * Set this to 'true' to bypass unit tests entirely. Its use is NOT RECOMMENDED, but quite convenient on occasion.
-     * 
+     *
      * @parameter expression="${maven.test.skip}"
      */
     private boolean skipTests;
@@ -90,7 +90,7 @@ public class TestCompileMojo
 
     /**
      * Socket connect port for flex/java communication to control if flashplayer is alive
-     * 
+     *
      * @parameter default-value="13540" expression="${testControlPort}"
      */
     private int testControlPort;
@@ -103,7 +103,7 @@ public class TestCompileMojo
 
     /**
      * Socket connect port for flex/java communication to transfer tests results
-     * 
+     *
      * @parameter default-value="13539" expression="${testPort}"
      */
     private int testPort;
@@ -319,6 +319,9 @@ public class TestCompileMojo
         Map<String, Artifact> artifacts = ArtifactUtils.artifactMapByVersionlessId( getDependencyArtifacts() );
 
         Artifact flexunit = (Artifact) artifacts.get( "com.adobe.flexunit:flexunit" );
+        if(flexunit == null) {
+            flexunit = (Artifact) artifacts.get("org.flexunit:flexunit");
+        }
         if ( flexunit != null )
         {
             if ( flexunit.getVersion().startsWith( "0" ) )
