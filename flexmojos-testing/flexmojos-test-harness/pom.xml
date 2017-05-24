@@ -128,7 +128,7 @@
             <xml>org.apache.maven.plugins:maven-resources-plugin:2.4.3</xml>
 
             <xml>com.adobe.flex:compiler:${flex.sdk.version}:pom</xml>
-            <xml>com.adobe.flex.framework:air-framework:${flex.sdk.version}:pom</xml>
+            <xml>com.adobe.flex.framework.air:air-framework:${flex.sdk.version}:pom</xml>
             <xml>com.adobe.flex.framework:flex-framework:${flex.sdk.version}:pom</xml>
 
             <xml>org.sonatype.flexmojos:flexmojos-maven-plugin:${project.version}</xml>

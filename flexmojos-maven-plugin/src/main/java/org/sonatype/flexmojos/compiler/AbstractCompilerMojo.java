@@ -1968,6 +1968,10 @@ public abstract class AbstractCompilerMojo<E extends Builder>
         }
         if ( dep == null )
         {
+            dep = searchFor( getDependencyArtifacts(), "com.adobe.flex.framework.air", "air-framework", null, "pom", null );
+        }
+        if ( dep == null )
+        {
             dep = searchFor( getDependencyArtifacts(), "com.adobe.flex.framework", "framework", null, "pom", null );
         }
         if ( dep == null )
