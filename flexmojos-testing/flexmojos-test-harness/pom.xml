@@ -154,7 +154,7 @@
 
       <plugin>
         <artifactId>maven-invoker-plugin</artifactId>
-        <version>1.6-SONATYPE-r940877</version>
+        <version>1.6</version>
         <configuration>
           <localRepositoryPath>${fake-repo}</localRepositoryPath>
           <extraArtifacts>
