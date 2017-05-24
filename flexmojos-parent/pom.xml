@@ -51,7 +51,7 @@
   <properties>
     <commons_io.version>1.4</commons_io.version>
     <flex.sdk.version>3.5.0.12683</flex.sdk.version>
-    <maven.version>2.0.9</maven.version>
+    <maven.version>3.3.9</maven.version>
     <plexus.version>1.0.0</plexus.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -352,17 +352,12 @@
       </dependency>
       <dependency>
         <groupId>org.apache.maven</groupId>
-        <artifactId>maven-project</artifactId>
-        <version>${maven.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.maven</groupId>
         <artifactId>maven-artifact</artifactId>
         <version>${maven.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.maven</groupId>
-        <artifactId>maven-artifact-manager</artifactId>
+        <artifactId>maven-compat</artifactId>
         <version>${maven.version}</version>
       </dependency>
       <dependency>

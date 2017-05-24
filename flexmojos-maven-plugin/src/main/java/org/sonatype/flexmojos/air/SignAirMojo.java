@@ -27,16 +27,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.KeyStore;
 import java.security.PrivateKey;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.artifact.Artifact;
-import org.apache.maven.artifact.transform.SnapshotTransformation;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.FileSet;
 import org.apache.maven.model.Resource;
@@ -63,6 +59,9 @@ public class SignAirMojo
     extends AbstractMojo
     implements MavenMojo
 {
+    private static final TimeZone UTC_TIME_ZONE = TimeZone.getTimeZone("UTC");
+
+    private static final String UTC_TIMESTAMP_PATTERN = "yyyyMMdd.HHmmss";
 
     private static String TIMESTAMP_NONE = "none";
 
@@ -73,14 +72,14 @@ public class SignAirMojo
 
     /**
      * Classifier to add to the artifact generated. If given, the artifact will be an attachment instead.
-     * 
+     *
      * @parameter expression="${flexmojos.classifier}"
      */
     private String classifier;
 
     /**
      * LW : needed for expression evaluation The maven MojoExecution needed for ExpressionEvaluation
-     * 
+     *
      * @parameter expression="${session}"
      * @required
      * @readonly
@@ -97,21 +96,21 @@ public class SignAirMojo
      * prefer to reinvent wheel, so more work to all of us.<BR>
      * I wonder why people has to be so creative, what is wrong with using something similar to what the rest of the
      * world uses?! =(
-     * 
+     *
      * @parameter expression="${flexmojos.flexbuilderCompatibility}"
      */
     private boolean flexBuilderCompatibility;
 
     /**
      * Include specified files in AIR package.
-     * 
+     *
      * @parameter
      */
     private List<String> includeFiles;
 
     /**
      * Include specified files or directories in AIR package.
-     * 
+     *
      * @parameter
      */
     private FileSet[] includeFileSets;
@@ -146,21 +145,21 @@ public class SignAirMojo
 
     /**
      * The type of keystore, determined by the keystore implementation.
-     * 
+     *
      * @parameter default-value="pkcs12"
      */
     private String storetype;
 
     /**
      * Strip artifact version during copy of dependencies.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean stripVersion;
 
     /**
      * The URL for the timestamp server. If 'none', no timestamp will be used.
-     * 
+     *
      * @parameter
      */
     private String timestampURL;
@@ -368,7 +367,9 @@ public class SignAirMojo
         String version;
         if ( project.getArtifact().isSnapshot() )
         {
-            String timestamp = SnapshotTransformation.getUtcDateFormatter().format( new Date() );
+            DateFormat utcDateFormatter = new SimpleDateFormat(UTC_TIMESTAMP_PATTERN);
+            utcDateFormatter.setTimeZone(UTC_TIME_ZONE);
+            String timestamp = utcDateFormatter.format( new Date() );
             version = project.getVersion().replace( "SNAPSHOT", timestamp );
         }
         else
@@ -379,7 +380,7 @@ public class SignAirMojo
         File dest = new File( airOutput, project.getBuild().getFinalName() + "-descriptor.xml" );
         try
         {
-            Map<String, String> props = new HashMap<String, String>();
+            Map<String, Object> props = new HashMap<String, Object>();
             props.put( "output", output.getName() );
             props.put( "version", version );
 
