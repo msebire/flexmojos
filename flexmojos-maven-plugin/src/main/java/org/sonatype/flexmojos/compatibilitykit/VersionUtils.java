@@ -17,7 +17,7 @@
  */
 package org.sonatype.flexmojos.compatibilitykit;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class VersionUtils
 {
@@ -44,6 +44,10 @@ public class VersionUtils
             return new int[0];
         }
 
+        if (!isLastCharDigit(version)) {
+            version = version.substring(0, version.length() - 1);
+        }
+
         int endIndex = version.indexOf( '-' );
         if ( endIndex != -1 )
         {
@@ -59,6 +63,10 @@ public class VersionUtils
         }
 
         return versions;
+    }
+
+    private static boolean isLastCharDigit(String version) {
+        return Character.isDigit(version.charAt(version.length() - 1));
     }
 
     public static boolean isMinVersionOK( int[] fdkVersion, int[] minVersion )
