@@ -241,7 +241,7 @@
       <artifactId>common-framework</artifactId>
       <type>pom</type>
       <dependencies>
-<!-- FLEXMOJOS-243 
+<!-- FLEXMOJOS-243
 Flex 4 requires a certain RSL loading order to avoid runtime errors (see 4.0.0.10845 flex-config.xml):
 1. textLayout
 2. osmf
@@ -250,7 +250,7 @@ Flex 4 requires a certain RSL loading order to avoid runtime errors (see 4.0.0.1
 5. sparkskins
 6. rpc
 7. datavisualization
--->      
+-->
         <dependency>
           <artifactId>text-layout</artifactId>
           <type>swc</type>
@@ -384,13 +384,13 @@ Flex 4 requires a certain RSL loading order to avoid runtime errors (see 4.0.0.1
         </dependency>
       </dependencies>
     </artifact>
-    
+
     <artifact>
       <artifactId>datavisualization</artifactId>
       <type>swc</type>
       <location>frameworks/libs/datavisualization.swc</location>
     </artifact>
-    
+
     <artifact>
       <artifactId>flash-integration</artifactId>
       <type>swc</type>
@@ -511,7 +511,7 @@ Flex 4 requires a certain RSL loading order to avoid runtime errors (see 4.0.0.1
     </artifact>
 
     <!-- locales -->
-    <!-- 
+    <!--
 da_DK
 de_DE
 en_US

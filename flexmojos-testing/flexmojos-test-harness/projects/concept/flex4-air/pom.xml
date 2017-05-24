@@ -62,7 +62,7 @@
       </plugin>
     </plugins>
   </build>
-  
+
   <dependencies>
     <!-- Air SDK dependencies -->
     <dependency>
@@ -72,5 +72,5 @@
       <type>pom</type>
     </dependency>
   </dependencies>
-  
+
 </project>
