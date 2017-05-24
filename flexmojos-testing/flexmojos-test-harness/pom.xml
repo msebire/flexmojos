@@ -87,17 +87,6 @@
             </configuration>
           </execution>
           <execution>
-            <id>copy-emma</id>
-            <phase>generate-test-resources</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-            <configuration>
-              <includeArtifactIds>emma</includeArtifactIds>
-              <outputDirectory>${fake-maven}/lib</outputDirectory>
-            </configuration>
-          </execution>
-          <execution>
             <id>copy-repo</id>
             <phase>generate-test-resources</phase>
             <goals>
@@ -126,31 +115,6 @@
           </properties>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.sonatype.maven.plugin</groupId>
-        <artifactId>emma4it-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>instrument</goal>
-            </goals>
-            <configuration>
-              <jarSets>
-                <jarSet>
-                  <directory>${fake-repo}</directory>
-                  <includes>
-                    <include>org/sonatype/flexmojos/**/*.jar</include>
-                  </includes>
-                </jarSet>
-              </jarSets>
-              <excludes>
-                <exclude>org.granite.*</exclude>
-                <exclude>shaded110.org.granite.*</exclude>
-              </excludes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
 
       <plugin>
         <artifactId>maven-invoker-plugin</artifactId>
@@ -162,8 +126,6 @@
             <xml>org.apache.maven.plugins:maven-install-plugin:2.3</xml>
             <xml>org.apache.maven.plugins:maven-dependency-plugin:2.1</xml>
             <xml>org.apache.maven.plugins:maven-resources-plugin:2.4.3</xml>
-
-            <xml>emma:emma:2.0.5312</xml>
 
             <xml>com.adobe.flex:compiler:${flex.sdk.version}:pom</xml>
             <xml>com.adobe.flex.framework:air-framework:${flex.sdk.version}:pom</xml>
@@ -199,11 +161,6 @@
 
   <dependencies>
 
-    <dependency>
-      <groupId>emma</groupId>
-      <artifactId>emma</artifactId>
-      <version>2.1.5320</version>
-    </dependency>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>

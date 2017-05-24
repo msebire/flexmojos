@@ -84,41 +84,6 @@
           </filesets>
         </configuration>
       </plugin>
-
-      <plugin>
-        <groupId>org.sonatype.maven.plugin</groupId>
-        <artifactId>emma4it-maven-plugin</artifactId>
-        <version>1.3</version>
-        <executions>
-          <execution>
-            <id>merge</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>merge</goal>
-            </goals>
-            <configuration>
-              <searchPath>${basedir}</searchPath>
-            </configuration>
-          </execution>
-          <execution>
-            <id>report</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <configuration>
-              <sourceSets>
-                <sourceSet>
-                  <directory>${basedir}</directory>
-                  <includes>
-                    <include>**/src/main/java/</include>
-                  </includes>
-                </sourceSet>
-              </sourceSets>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
 
