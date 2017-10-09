@@ -65,10 +65,11 @@ import flex2.tools.oem.internal.OEMConfiguration;
  * The Flex Compiler plugin compiles all ActionScript sources. It can compile the source into 'swf' files. The plugin
  * supports 'swf' packaging.
  * </p>
- * 
+ *
  * @author Marvin Herman Froeder (velo.br@gmail.com)
  * @since 1.0
  * @goal compile-swf
+ * @threadSafe
  * @requiresDependencyResolution compile
  * @phase compile
  */
@@ -78,21 +79,21 @@ public class SwfMojo
 
     /**
      * Turn on generation of debuggable SWFs. False by default for mxmlc, but true by default for compc.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean debug;
 
     /**
      * Default locale for libraries. This is useful to non localized applications, just to define swc.rb locale
-     * 
+     *
      * @parameter default-value="en_US"
      */
     private String defaultLocale;
 
     /**
      * When true, tells flexmojos to use link reports/load externs on modules compilation
-     * 
+     *
      * @parameter default-value="true" expression="${loadExternsOnModules}"
      */
     private boolean loadExternsOnModules;
@@ -100,13 +101,13 @@ public class SwfMojo
     /**
      * The list of modules files to be compiled. The path must be relative with source folder.<BR>
      * Usage:
-     * 
+     *
      * <pre>
      * &lt;moduleFiles&gt;
      *   &lt;module&gt;com/acme/AModule.mxml&lt;/module&gt;
      * &lt;/moduleFiles&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] moduleFiles;
@@ -120,14 +121,14 @@ public class SwfMojo
 
     /**
      * The file to be compiled. The path must be relative with source folder
-     * 
+     *
      * @parameter
      */
     protected String sourceFile;
 
     /**
      * When true will strip artifact and version information from the built MXML module artifact.
-     * 
+     *
      * @parameter default-value="false"
      */
     private boolean stripModuleArtifactInfo;
@@ -141,7 +142,7 @@ public class SwfMojo
      * When true, flexmojos will register register every compiled SWF files as trusted. These SWF files are assigned to
      * the local-trusted sandbox. They can interact with any other SWF files, and they can load data from anywhere,
      * remote or local. On false nothing is done, so if the file is already trusted it will still as it is.
-     * 
+     *
      * @parameter default-value="true" expression="${updateSecuritySandbox}"
      */
     private boolean updateSecuritySandbox;

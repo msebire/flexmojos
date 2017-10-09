@@ -35,9 +35,10 @@ import flex2.tools.oem.internal.OEMConfiguration;
 
 /**
  * Goal which generate the flex-config without compile.
- * 
+ *
  * @goal generate-config-swc
  * @since 3.3
+ * @threadSafe
  */
 public class LibraryFlexConfigGeneratorMojo
     extends SwcMojo

@@ -26,11 +26,12 @@ import org.apache.maven.plugin.MojoFailureException;
 
 /**
  * Build a SWC of the test classes for the current project.
- * 
+ *
  * @author Marvin Herman Froeder (velo.br@gmail.com)
  * @since 2.0
  * @goal test-swc
  * @requiresDependencyResolution
+ * @threadSafe
  */
 public class TestSwcCompilerMojo
     extends SwcMojo
@@ -63,7 +64,12 @@ public class TestSwcCompilerMojo
         if ( testFolder.exists() )
         {
             setUp();
-            run();
+            try {
+                LOCK.lock();
+                run();
+            } finally {
+                LOCK.unlock();
+            }
             tearDown();
         }
         else

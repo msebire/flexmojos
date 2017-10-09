@@ -25,11 +25,12 @@ import org.apache.maven.plugin.MojoExecutionException;
 
 /**
  * Build the SWF including all TEST libraries.
- * 
+ *
  * @author Marvin Herman Froeder (velo.br@gmail.com)
  * @since 3.5
  * @goal test-swf
  * @requiresDependencyResolution test
+ * @threadSafe
  */
 public class TestSwfMojo
     extends SwfMojo

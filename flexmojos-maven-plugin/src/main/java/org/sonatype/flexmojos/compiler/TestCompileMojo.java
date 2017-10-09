@@ -51,6 +51,7 @@ import flex2.tools.oem.Report;
  * @goal test-compile
  * @requiresDependencyResolution test
  * @phase test
+ * @threadSafe
  */
 public class TestCompileMojo
     extends SwfMojo
@@ -245,7 +246,12 @@ public class TestCompileMojo
         }
 
         setUp();
-        run();
+        try {
+            LOCK.lock();
+            run();
+        } finally {
+            LOCK.unlock();
+        }
         tearDown();
     }
 

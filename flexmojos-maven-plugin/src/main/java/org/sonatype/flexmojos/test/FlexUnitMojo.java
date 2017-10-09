@@ -43,12 +43,13 @@ import org.sonatype.flexmojos.test.report.TestCaseReport;
  * <li>advanced flex debug</li>
  * <li>FlexMonkey</li>
  * </ul>
- * 
+ *
  * @author Marvin Herman Froeder (velo.br@gmail.com)
  * @since 1.0
  * @goal test-run
  * @requiresDependencyResolution
  * @phase test
+ * @threadSafe
  */
 public class FlexUnitMojo
     extends AbstractIrvinMojo
@@ -60,21 +61,21 @@ public class FlexUnitMojo
 
     /**
      * Socket connect port for flex/java communication to transfer tests results
-     * 
+     *
      * @parameter default-value="13539" expression="${testPort}"
      */
     private int testPort;
 
     /**
      * Socket connect port for flex/java communication to control if flashplayer is alive
-     * 
+     *
      * @parameter default-value="13540" expression="${testControlPort}"
      */
     private int testControlPort;
 
     /**
      * Can be of type <code>&lt;argument&gt;</code>
-     * 
+     *
      * @parameter expression="${flashPlayer.command}"
      */
     private String flashPlayerCommand;
@@ -117,7 +118,7 @@ public class FlexUnitMojo
 
     /**
      * When true, allow flexmojos to launch xvfb-run to run test if it detects headless linux env
-     * 
+     *
      * @parameter default-value="true" expression="${allowHeadlessMode}"
      */
     private boolean allowHeadlessMode;
@@ -125,14 +126,14 @@ public class FlexUnitMojo
     /**
      * Timeout for the first connection on ping Thread. That means how much time flexmojos will wait for Flashplayer be
      * loaded at first time.
-     * 
+     *
      * @parameter default-value="20000" expression="${firstConnectionTimeout}"
      */
     private int firstConnectionTimeout;
 
     /**
      * Test timeout to wait for socket responding
-     * 
+     *
      * @parameter default-value="2000" expression="${testTimeout}"
      */
     private int testTimeout;
@@ -158,7 +159,12 @@ public class FlexUnitMojo
         }
         else
         {
-            run();
+            try {
+                LOCK.lock();
+                run();
+            } finally {
+                LOCK.unlock();
+            }
             tearDown();
         }
     }
@@ -177,7 +183,7 @@ public class FlexUnitMojo
 
     /**
      * Write a test report to disk.
-     * 
+     *
      * @param reportString the report to write.
      * @throws MojoExecutionException
      */

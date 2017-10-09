@@ -47,21 +47,22 @@ import com.uwyn.jhighlight.renderer.XhtmlRendererFactory;
  * Generate the "Source view" documentation from the sources, like Flex/Flash
  * Builder does for the release builds. Users can they right click the
  * application and view the sources.
- * 
+ *
  * <p>
  * This goal produces a syntax highlighted version of the as, mxml and html
  * documents in the sources, and just copies other types of files. It also
  * generates a navigation to browse the sources.
  * </p>
- * 
+ *
  * @goal source-view
  * @phase prepare-package
+ * @threadSafe
  */
 public class SourceViewMojo extends AbstractIrvinMojo
 {
     /**
      * The Maven project.
-     * 
+     *
      * @parameter expression="${project}"
      * @required
      * @readonly
@@ -70,25 +71,25 @@ public class SourceViewMojo extends AbstractIrvinMojo
 
     /**
      * The name of the directory containing the "View source" documentation.
-     * 
+     *
      * <p>
      * It must be the same as the one declared in the Flex application:
-     * 
+     *
      * <pre>
      * &lt;mx:Application [...] viewSourceURL="srcview"&gt;
      *    [...]
      * &lt;/mx:Application&gt;
      * </pre>
-     * 
+     *
      * </p>
-     * 
+     *
      * @parameter default-value="srcview"
      */
     protected String sourceViewDirectoryName;
 
     /**
      * Encoding to use for the generated documentation.
-     * 
+     *
      * @parameter default-value="UTF-8"
      */
     protected String outputEncoding;
@@ -107,7 +108,7 @@ public class SourceViewMojo extends AbstractIrvinMojo
      * The file filter to use when processing source files.
      */
     protected IOFileFilter filter = FileFilterUtils.makeCVSAware(FileFilterUtils.makeSVNAware(null));
-    
+
     /**
      * {@inheritDoc}
      */
@@ -172,7 +173,7 @@ public class SourceViewMojo extends AbstractIrvinMojo
     /**
      * Loop through source files in the directory and syntax highlight and/or
      * copy them to the target directory.
-     * 
+     *
      * @param directory
      *            The source directory to process.
      * @param targetDirectory
@@ -211,7 +212,7 @@ public class SourceViewMojo extends AbstractIrvinMojo
 
     /**
      * Syntax highlight and/or copy the source file to the target directory.
-     * 
+     *
      * @param file
      *            The file to process.
      * @param targetDirectory
@@ -249,7 +250,7 @@ public class SourceViewMojo extends AbstractIrvinMojo
 
     /**
      * Get the syntax highlighting filter to use for a file extension.
-     * 
+     *
      * @param fileExtension
      *            the file extension to test.
      * @return null if no filter available for this file type.
@@ -281,7 +282,7 @@ public class SourceViewMojo extends AbstractIrvinMojo
     /**
      * Merge the given template with the {@link SourceViewMojo#velocityContext}
      * and produce the file in the output documentation.
-     * 
+     *
      * @param templateName
      *            The name of the template to process.
      * @param targetDirectory
@@ -330,12 +331,12 @@ public class SourceViewMojo extends AbstractIrvinMojo
     /**
      * Resolve the file to assign as the source of the content frame in the
      * generated documentation.
-     * 
+     *
      * <p>
      * Tries to resolve the main source and defaults to a blank page if not
      * found.
      * </p>
-     * 
+     *
      * @return The path to the page to use in the generated documentation.
      */
     @SuppressWarnings("unchecked")

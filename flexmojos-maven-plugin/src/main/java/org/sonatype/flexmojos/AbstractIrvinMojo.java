@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.locks.*;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.factory.ArtifactFactory;
@@ -69,7 +70,7 @@ public abstract class AbstractIrvinMojo
 
     /**
      * LW : needed for expression evaluation The maven MojoExecution needed for ExpressionEvaluation
-     * 
+     *
      * @parameter expression="${session}"
      * @required
      * @readonly
@@ -81,7 +82,7 @@ public abstract class AbstractIrvinMojo
 
     /**
      * Local repository to be used by the plugin to resolve dependencies.
-     * 
+     *
      * @parameter expression="${localRepository}"
      */
     protected ArtifactRepository localRepository;
@@ -98,7 +99,7 @@ public abstract class AbstractIrvinMojo
 
     /**
      * The maven project.
-     * 
+     *
      * @parameter expression="${project}"
      * @required
      * @readonly
@@ -112,7 +113,7 @@ public abstract class AbstractIrvinMojo
 
     /**
      * List of remote repositories to be used by the plugin to resolve dependencies.
-     * 
+     *
      * @parameter expression="${project.remoteArtifactRepositories}"
      */
     @SuppressWarnings( "unchecked" )
@@ -136,6 +137,8 @@ public abstract class AbstractIrvinMojo
         super();
     }
 
+    protected static final ReentrantLock LOCK = new ReentrantLock();
+
     /**
      * Executes plugin
      */
@@ -149,13 +152,18 @@ public abstract class AbstractIrvinMojo
         }
 
         setUp();
-        run();
+        try {
+            LOCK.lock();
+            run();
+        } finally {
+            LOCK.unlock();
+        }
         tearDown();
     }
 
     /**
      * Returns Set of dependency artifacts which are resolved for the project.
-     * 
+     *
      * @return Set of dependency artifacts.
      * @throws MojoExecutionException
      */
@@ -197,7 +205,7 @@ public abstract class AbstractIrvinMojo
 
     /**
      * Get dependency artifacts for given scope
-     * 
+     *
      * @param scopes for which to get artifacts
      * @return List of artifacts
      * @throws MojoExecutionException
@@ -233,7 +241,7 @@ public abstract class AbstractIrvinMojo
 
     /**
      * Perform plugin functionality
-     * 
+     *
      * @throws MojoExecutionException
      * @throws MojoFailureException
      */
@@ -242,7 +250,7 @@ public abstract class AbstractIrvinMojo
 
     /**
      * Perform setup before plugin is run.
-     * 
+     *
      * @throws MojoExecutionException
      * @throws MojoFailureException
      */
@@ -251,7 +259,7 @@ public abstract class AbstractIrvinMojo
 
     /**
      * Perform (cleanup) actions after plugin has run
-     * 
+     *
      * @throws MojoExecutionException
      * @throws MojoFailureException
      */
