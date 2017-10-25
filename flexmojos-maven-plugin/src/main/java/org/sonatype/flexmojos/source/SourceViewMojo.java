@@ -56,6 +56,7 @@ import com.uwyn.jhighlight.renderer.XhtmlRendererFactory;
  * 
  * @goal source-view
  * @phase prepare-package
+ * @threadSafe
  */
 public class SourceViewMojo extends AbstractIrvinMojo
 {

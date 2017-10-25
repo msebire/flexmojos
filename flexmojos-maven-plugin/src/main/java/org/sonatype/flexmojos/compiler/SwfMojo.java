@@ -69,6 +69,7 @@ import flex2.tools.oem.internal.OEMConfiguration;
  * @author Marvin Herman Froeder (velo.br@gmail.com)
  * @since 1.0
  * @goal compile-swf
+ * @threadSafe
  * @requiresDependencyResolution compile
  * @phase compile
  */

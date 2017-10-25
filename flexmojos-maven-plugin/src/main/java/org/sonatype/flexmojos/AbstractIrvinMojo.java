@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.locks.*;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.factory.ArtifactFactory;
@@ -49,6 +50,8 @@ public abstract class AbstractIrvinMojo
     extends AbstractMojo
     implements MavenMojo
 {
+
+    protected static final ReentrantLock LOCK = new ReentrantLock();
 
     /**
      * @component
@@ -149,7 +152,12 @@ public abstract class AbstractIrvinMojo
         }
 
         setUp();
-        run();
+        try {
+            LOCK.lock();
+            run();
+        } finally {
+            LOCK.unlock();
+        }
         tearDown();
     }
 

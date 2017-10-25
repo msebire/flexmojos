@@ -30,6 +30,7 @@ import org.apache.maven.plugin.MojoExecutionException;
  * @since 3.5
  * @goal test-swf
  * @requiresDependencyResolution test
+ * @threadSafe
  */
 public class TestSwfMojo
     extends SwfMojo

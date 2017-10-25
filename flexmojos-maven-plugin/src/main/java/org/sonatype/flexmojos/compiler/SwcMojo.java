@@ -55,6 +55,7 @@ import flex2.tools.oem.internal.OEMConfiguration;
  * @goal compile-swc
  * @requiresDependencyResolution
  * @phase compile
+ * @threadSafe
  */
 public class SwcMojo
     extends AbstractCompilerMojo<Library>

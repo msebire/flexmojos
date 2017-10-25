@@ -49,6 +49,7 @@ import org.sonatype.flexmojos.test.report.TestCaseReport;
  * @goal test-run
  * @requiresDependencyResolution
  * @phase test
+ * @threadSafe
  */
 public class FlexUnitMojo
     extends AbstractIrvinMojo
@@ -158,7 +159,12 @@ public class FlexUnitMojo
         }
         else
         {
-            run();
+            try {
+                LOCK.lock();
+                run();
+            } finally {
+                LOCK.unlock();
+            }
             tearDown();
         }
     }

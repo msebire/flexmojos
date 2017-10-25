@@ -38,6 +38,7 @@ import flex2.tools.oem.internal.OEMConfiguration;
  * 
  * @goal generate-config-swc
  * @since 3.3
+ * @threadSafe
  */
 public class LibraryFlexConfigGeneratorMojo
     extends SwcMojo
